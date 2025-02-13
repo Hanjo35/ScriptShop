@@ -9,6 +9,10 @@
         margin-bottom: 50px;
       }
 
+      #txt_welcome {
+        text-align: center;
+        margin-bottom: 50px;
+      }
       .card {
         text-align: center;
       }
@@ -35,26 +39,30 @@
   </head>
   <body>
     <h1> Tennis market </h1>
-    <div>
+    <div id="txt_welcome">
       Welcom to Tennis market!
       Enjoy your shopping.
       <br>
       <br>
       <a href ="./orderlist.html"> order list </a> 
     </div>
-    <div class = "card">
-        <img src = "./img/redRacket.png">
-        <p class = "card title"> Red Racket </p>
-        <input type = "button" value = "order" onclick = "alert(1);">
-        <div class = "card">
-          <img src = "./img/blueRacket.png">
-          <p class = "card title"> Blue Racket </p>
-          <input type = "button" value = "order" onclick = "alert(1);">
+    <div style="display: flex; justify-content: space-around; gap: 20px;">
+      <!-- 카드들 -->
+      <div class="card">
+        <img class="card_img" src="./img/redRacket.png" alt="Red Racket">
+        <p class="card_title">Red Racket</p>
+        <input class="card_button" type="button" value="order" onclick="location.href='/order?productId=1'">
       </div>
-      <div class = "card">
-        <img src = "./img/blackRacket.png">
-        <p class = "card title"> Black Racket </p>
-        <input type = "button" value = "order" onclick = "alert(1);">
+      <div class="card">
+        <img class="card_img" src="./img/blueRacket.png" alt="Blue Racket">
+        <p class="card_title">Blue Racket</p>
+        <input class="card_button" type="button" value="order" onclick="location.href='/order?productId=2'">
+      </div>
+      <div class="card">
+        <img class="card_img" src="./img/blackRacket.png" alt="Black Racket">
+        <p class="card_title">Black Racket</p>
+        <input class="card_button" type="button" value="order" onclick="location.href='/order?productId=3'">
+      </div>
     </div>
     </div>
   </body>
