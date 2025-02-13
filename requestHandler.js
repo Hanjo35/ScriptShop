@@ -41,9 +41,9 @@ function blackRacket(response) {
 }
 
 function order(response, productId) {
-    response.writeHead(200, {'Content-Type' : 'text/html'});
 
-    mariadb.query("INSERT INTO orderlist VALUES (" + productId + ", '" + new Date().toLocaleDateString() + "');" ,function(err, rows) { 
+    mariadb.query("INSERT INTO orderlist VALUES (" + productId + ", '" + new Date().toLocaleDateString() + "');" ,
+    function(err, rows) { 
         console.log(rows);
     })
 
@@ -51,10 +51,32 @@ function order(response, productId) {
     response.end();
 }
 
+function orderlist(response) {
+    console.log('orderlist');
+
+    response.writeHead(200, {'Content-Type' : 'text/html'});
+
+    mariadb.query("SELECT * FROM orderlist", function(err, rows) {
+        response.write(orderlist_view);
+
+        rows.forEach(element => {
+            response.write("<tr>" 
+                + "<td>" + element.product_id+"</td>"
+                + "<td>" + element.order_date+"</td>"
+                + "</tr>");
+        });
+        
+        response.write("</table>");
+        response.end();
+
+    })
+}  
+
 let handle = {}; // key:value
 
 handle['/'] = main;
 handle['/order'] = order;
+handle['/orderlist'] = orderlist;
 
 /** image directory **/
 handle['/img/redRacket.png'] = redRacket;
