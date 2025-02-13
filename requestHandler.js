@@ -46,7 +46,7 @@ function order(response, productId) {
     function(err, rows) { 
         console.log(rows);
     })
-
+    response.writeHead(200, {'Content-Type' : 'text/html'});
     response.write('order page');
     response.end();
 }
